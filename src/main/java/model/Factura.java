@@ -60,6 +60,9 @@ public class Factura
     private Double total;
     private LocalDate fecha;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Cliente cliente;
+
     @Override
     public String toString()
     {

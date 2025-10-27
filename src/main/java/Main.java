@@ -1,3 +1,4 @@
+import model.Cliente;
 import model.Factura;
 import service.IDAO;
 import service.ImpIDAO;
@@ -21,9 +22,24 @@ public class Main
         facturas.forEach(factura -> System.out.println(factura.getNombreCliente() + " - " + factura.getTotal()));
     }
 
+    public static void listarClientes() {
+        System.out.println("Registros Almacenados:");
+        java.util.List<Cliente> clientes = dao.getAll("Cliente.All", Cliente.class);
+        clientes.forEach(cliente -> System.out.println(cliente.getNombreCliente()));
+    }
+
     public static void main(String[] args)
     {
-        dao.delete(dao.findById("fb9deae0-ab24-42ba-9b95-8fd2878b5fca", Factura.class));
-        listarFacturas();
+
+
+        Cliente c = new Cliente();
+        c.setNombreCliente("torito");
+
+        dao.insert(c);
+
+
+        listarClientes();
+
+
     }
 }
