@@ -35,12 +35,12 @@ public class Main
     public static void main(String[] args)
     {
         Cliente c = new Cliente();
-        c.setNombreCliente("Maria Gomez");
+        c.setNombreCliente("CashCash");
         dao.insert(c);
 
 
         Factura f = new Factura();
-        f.setTotal(1500.0);
+        f.setTotal(19800.0);
         f.setFecha(java.time.LocalDate.now());
         f.setCliente(c);
         dao.insert(f);
