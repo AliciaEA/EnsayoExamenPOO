@@ -18,8 +18,12 @@ public class Main
 
     public static void listarFacturas() {
         System.out.println("Registros Almacenados:");
-        java.util.List<Factura> facturas = dao.getAll("Factura.All", Factura.class);
-        facturas.forEach(factura -> System.out.println(factura.getNombreCliente() + " - " + factura.getTotal()));
+        java.util.List<Cliente> clientes = dao.getAll("Cliente.All", Cliente.class);
+        if (clientes != null) {
+            clientes.forEach(cliente -> System.out.println(cliente.getNombreCliente()));
+        } else {
+            System.out.println("No clients found.");
+        }
     }
 
     public static void listarClientes() {
@@ -30,15 +34,24 @@ public class Main
 
     public static void main(String[] args)
     {
-
-
         Cliente c = new Cliente();
-        c.setNombreCliente("torito");
-
+        c.setNombreCliente("Maria Gomez");
         dao.insert(c);
 
 
-        listarClientes();
+        Factura f = new Factura();
+        f.setTotal(1500.0);
+        f.setFecha(java.time.LocalDate.now());
+        f.setCliente(c);
+        dao.insert(f);
+
+
+
+
+
+
+
+        listarFacturas();
 
 
     }

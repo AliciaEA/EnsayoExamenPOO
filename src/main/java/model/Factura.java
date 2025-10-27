@@ -60,8 +60,19 @@ public class Factura
     private Double total;
     private LocalDate fecha;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id")
     public Cliente cliente;
+
+    public Cliente getCliente()
+    {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente)
+    {
+        this.cliente = cliente;
+    }
 
     @Override
     public String toString()
@@ -71,6 +82,7 @@ public class Factura
                 ", nombreCliente='" + nombreCliente + '\'' +
                 ", total=" + total +
                 ", fecha=" + fecha +
+                ", cliente=" + cliente +
                 '}';
     }
 }
